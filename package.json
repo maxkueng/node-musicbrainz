@@ -1,0 +1,26 @@
+{
+  "name": "musicbrainz",
+  "description": "A MusicBrinaz XML Web Service Version 2 client",
+  "keywords" : [ "musicbrainz", "metadata", "mp3", "flac", "ogg", "music", "tagging" ], 
+  "version": "0.1.0",
+  "homepage": "http://maxkueng.com/node-musicbrainz",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxkueng/node-musicbrainz.git"
+  },
+  "author": "Max Kueng <me@maxkueng.com> (http://maxkueng.com/)",
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies" : {
+    "request": ">=1.9.0", 
+    "xml2js": "*"
+  }, 
+  "main" : "./lib/musicbrainz", 
+  "licenses" : [ 
+    { 
+	  "type" : "MIT", 
+      "url" : "https://github.com/maxkueng/node-musicbrainz/raw/master/LICENSE"
+    }
+  ]
+}
