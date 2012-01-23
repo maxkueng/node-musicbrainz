@@ -37,7 +37,7 @@ The same but different:
 var Release = mb.Release;
 
 var release = new Release('283821f3-522a-45ca-a669-d74d0b4fb93a');
-release.load(function () {
+release.load(['artists'], function () {
 	console.log(release);
 });
 ```
