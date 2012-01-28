@@ -16,6 +16,7 @@
     "request": ">=1.9.0", 
     "xml2js": "*"
   }, 
+  "engines": ["node >=0.4.0"], 
   "main" : "./lib/musicbrainz", 
   "licenses" : [ 
     { 
