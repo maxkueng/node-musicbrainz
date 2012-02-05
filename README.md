@@ -16,8 +16,8 @@ Supported resources
  - Release Group (artists, releases)
  - Work
 
-Examples
---------
+Lookup Examples
+---------------
 
 ```javascript
 var mb = require('musicbrainz');
@@ -41,6 +41,40 @@ release.load(['artists'], function () {
 	console.log(release);
 });
 ```
+
+Caching Lookups with Redis
+--------------------------
+
+```javascript
+var mb = require('musicbrainz');
+var redis = require('redis');
+
+mb.lookupCache = function (uri, callback, lookup) {
+	var key = 'lookup:' + uri;
+	var r = redis.createClient();
+
+	r.on('connect', function () {
+		r.get(key, function (err, reply) {
+			if (!err && reply) {
+				callback(null, JSON.parse(reply));
+
+			} else {
+				lookup(function (err, resource) {
+					callback(err, resource);
+
+					if (err) { r.quit(); return; }
+
+					r.set(key, JSON.stringify(resource), function (err, reply) {
+						r.quit();
+					});
+
+				});
+			}
+		});
+	});
+};
+```
+
 
 [node]: http://nodejs.org/
 [mb]: http://musicbrainz.org/
