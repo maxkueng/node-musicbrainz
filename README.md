@@ -49,7 +49,7 @@ Caching Lookups with Redis
 var mb = require('musicbrainz');
 var redis = require('redis');
 
-mb.lookupCache = function (uri, callback, lookup) {
+mb.lookupCache = function (uri, force, callback, lookup) {
 	var key = 'lookup:' + uri;
 	var r = redis.createClient();
 
