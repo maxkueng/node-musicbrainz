@@ -5,6 +5,10 @@ This is a [MusicBrainz][mb] [XML Web Service Version 2][mbwsv2] client written i
 
 It's a work in progress. Currently only supports lookups with an MBID or DiscId. No searches and such.
 
+### Contribute
+
+Want to help make node-musicbrainz better or fix a bug? Please read [How To Contribute][contribute] in the wiki.
+
 Supported resources
 -------------------
 
@@ -79,3 +83,4 @@ mb.lookupCache = function (uri, force, callback, lookup) {
 [node]: http://nodejs.org/
 [mb]: http://musicbrainz.org/
 [mbwsv2]: http://musicbrainz.org/doc/XML_Web_Service/Version_2
+[contribute]: https://github.com/maxkueng/node-musicbrainz/wiki/Contribute
