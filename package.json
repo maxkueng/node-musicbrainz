@@ -13,9 +13,9 @@
     "lib": "./lib"
   },
   "dependencies" : {
-    "request": ">=1.9.0", 
-    "xml2js": "*",
-	"timetrickle": "*"
+    "request": "1.9.x", 
+    "xml2js": "0.1.x",
+	"timetrickle": "0.0.x"
   }, 
   "engines": ["node >=0.4.0"], 
   "main" : "./lib/musicbrainz", 
