@@ -2,7 +2,7 @@
   "name": "musicbrainz",
   "description": "A MusicBrinaz XML Web Service Version 2 client",
   "keywords" : [ "musicbrainz", "metadata", "mp3", "flac", "ogg", "music", "tagging" ], 
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://maxkueng.com/node-musicbrainz",
   "repository": {
     "type": "git",
