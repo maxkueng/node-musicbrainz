@@ -9,6 +9,12 @@
     "url": "git://github.com/maxkueng/node-musicbrainz.git"
   },
   "author": "Max Kueng <me@maxkueng.com> (http://maxkueng.com/)",
+  "contributors":[
+    {
+        "name": "Alex Ehrnschwender",
+        "email": "alex@crunchdevelopment.com"
+    }
+  ], 
   "directories": {
     "lib": "./lib"
   },
