@@ -104,13 +104,13 @@ describe('mb', function(){
 
     describe('#searchReleases()', function(){
         it('should return an error when mbid is not present', function(){
-            mb.searchReleases( '', [], function(err, res){
+            mb.searchReleases( '', {}, function(err, res){
                 if(err) throw err;
                 done();
             });
         });
         it('should return an array of releases from a valid query', function(){
-            mb.searchArtists( testReleaseQuery, [], function(err, res){
+            mb.searchArtists( testReleaseQuery, {}, function(err, res){
                 if(err) throw err;
                 ok(res instanceof Array);
             });
@@ -121,13 +121,13 @@ describe('mb', function(){
 
     describe('#searchRecordings()', function(){
         it('should return an error when mbid is not present', function(){
-            mb.searchRecordings( '', [], function(err, res){
+            mb.searchRecordings( '', {}, function(err, res){
                 if(err) throw err;
                 done();
             });
         });
         it('should return an array of recordings from a valid query', function(){
-            mb.searchArtists( testRecordingQuery, [], function(err, res){
+            mb.searchArtists( testRecordingQuery, {}, function(err, res){
                 if(err) throw err;
                 ok(res instanceof Array);
             });
@@ -138,13 +138,13 @@ describe('mb', function(){
 
     describe('#searchArtists()', function(){
         it('should return an error when mbid is not present', function(){
-            mb.searchArtists( '', [], function(err, res){
+            mb.searchArtists( '', {}, function(err, res){
                 if(err) throw err;
                 done();
             });
         });
         it('should return an array of artists from a valid query', function(){
-            mb.searchArtists( testArtistQuery, [], function(err, res){
+            mb.searchArtists( testArtistQuery, {}, function(err, res){
                 if(err) throw err;
                 ok(res instanceof Array);
             });
