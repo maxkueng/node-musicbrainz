@@ -50,13 +50,13 @@ Search Examples
 ---------------
 
 ```javascript
-mb.searchArtists('The White Stripes', function(err, artists){
+mb.searchArtists('The White Stripes', {}, function(err, artists){
     console.log(artists);
 });
-mb.searchRecordings('Seven Nation Army', function(err, recordings){
+mb.searchRecordings('Seven Nation Army', { artist: 'The White Stripes' }, function(err, recordings){
     console.log(recordings);
 });
-mb.searchReleases('Elephant', function(err, releases){
+mb.searchReleases('Elephant', { country: 'US' }, function(err, releases){
     console.log(releases);
 });
 ```
