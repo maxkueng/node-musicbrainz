@@ -16,9 +16,9 @@ var testBadReleaseMbid = '',
     testBadWorkMbid = '',
     testDiscMbid = '';
 
-var testReleaseQuery = 'Elephant',
+var testReleaseQuery = '',
     testReleaseGroupQuery = '',
-    testRecordingQuery = 'Fell In Love With A Girl',
+    testRecordingQuery = '',
     testArtistQuery = 'The White Stripes',
     testWorkQuery = '',
     testDiscQuery = '';
