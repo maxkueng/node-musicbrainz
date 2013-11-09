@@ -1,6 +1,8 @@
 MusicBrainz API for node.js
 ===========================
 
+[![Build Status](https://secure.travis-ci.org/maxkueng/node-musicbrainz.png?branch=master)](http://travis-ci.org/maxkueng/node-musicbrainz)
+
 This is a [MusicBrainz][mb] [XML Web Service Version 2][mbwsv2] client written in JavaScript for [node.js][node].
 
 It's a work in progress. Currently supports lookups with an MBID or DiscId, as well as searches for artist, release, or recording.
