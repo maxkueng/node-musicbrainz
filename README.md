@@ -3,7 +3,7 @@ MusicBrainz API for node.js
 
 This is a [MusicBrainz][mb] [XML Web Service Version 2][mbwsv2] client written in JavaScript for [node.js][node].
 
-It's a work in progress. Currently only supports lookups with an MBID or DiscId. No searches and such.
+It's a work in progress. Currently supports lookups with an MBID or DiscId, as well as searches for artist, release, or recording.
 
 ### Contribute
 
@@ -45,6 +45,22 @@ release.load(['artists'], function () {
 	console.log(release);
 });
 ```
+
+Search Examples
+---------------
+
+```javascript
+mb.searchArtists('The White Stripes', {}, function(err, artists){
+    console.log(artists);
+});
+mb.searchRecordings('Seven Nation Army', { artist: 'The White Stripes' }, function(err, recordings){
+    console.log(recordings);
+});
+mb.searchReleases('Elephant', { country: 'US' }, function(err, releases){
+    console.log(releases);
+});
+```
+
 
 Caching Lookups with Redis
 --------------------------
