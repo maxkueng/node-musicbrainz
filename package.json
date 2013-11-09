@@ -1,6 +1,6 @@
 {
   "name": "musicbrainz",
-  "description": "A MusicBrinaz XML Web Service Version 2 client",
+  "description": "A MusicBrinainz XML Web Service Version 2 client",
   "keywords": [
     "musicbrainz",
     "metadata",
