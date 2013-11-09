@@ -35,6 +35,9 @@
   "devDependencies": {
     "mocha": "~1.14.0"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "engines": [
     "node >=0.4.0"
   ],
