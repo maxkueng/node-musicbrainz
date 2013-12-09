@@ -11,39 +11,39 @@ var expect = require('chai').expect,
 
 
 var testReleaseMbid = '1d9f2d0e-f81d-4ee9-90b4-d2fa8c1f13f0',
-    testReleaseGroupMbid = 'eda96b07-480c-3c97-9223-1ead72289dd2',
-    testRecordingMbid = '066c13ca-e62b-4b49-ba4e-290e23723e0e',
-    testArtistMbid = '11ae9fbb-f3d7-4a47-936f-4c0a04d3b3b5',
+	testReleaseGroupMbid = 'eda96b07-480c-3c97-9223-1ead72289dd2',
+	testRecordingMbid = '066c13ca-e62b-4b49-ba4e-290e23723e0e',
+	testArtistMbid = '11ae9fbb-f3d7-4a47-936f-4c0a04d3b3b5',
 	testLabelMbid = '46f0f4cd-8aab-4b33-b698-f459faf64190',
-    testWorkMbid = '15d89e06-c8b4-3170-8258-570f0b811273',
-    testDiscId = '5RCTaO1Vd7Lv4pwVqo6kk7UVGzs-';
+	testWorkMbid = '15d89e06-c8b4-3170-8258-570f0b811273',
+	testDiscId = '5RCTaO1Vd7Lv4pwVqo6kk7UVGzs-';
 
 var testBadReleaseMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadReleaseGroupMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadRecordingMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadArtistMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadLabelMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadWorkMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    testBadDiscId = 'discIddiscIddiscId';
+	testBadReleaseGroupMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+	testBadRecordingMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+	testBadArtistMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+	testBadLabelMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+	testBadWorkMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+	testBadDiscId = 'discIddiscIddiscId';
 
 var testReleaseQuery = 'Elephant',
-    testReleaseGroupQuery = '',
-    testRecordingQuery = 'Fell In Love With A Girl',
-    testArtistQuery = 'The White Stripes',
-    testLabelQuery = 'Warp',
-    testWorkQuery = 'XX';
+	testReleaseGroupQuery = '',
+	testRecordingQuery = 'Fell In Love With A Girl',
+	testArtistQuery = 'The White Stripes',
+	testLabelQuery = 'Warp',
+	testWorkQuery = 'XX';
 
 var testBadReleaseQuery = 'Uyguyg uiygu ygui',
-    testBadReleaseGroupQuery = 'Ugb uhbu yvgg uyv',
-    testBadRecordingQuery = '0976087078',
-    testBadArtistQuery = 'OIouiyhi ughiug',
-    testBadLabelQuery = 'OIjhkopk p;ko',
-    testBadWorkQuery = 'OIjhiouhguhuh uh u';
+	testBadReleaseGroupQuery = 'Ugb uhbu yvgg uyv',
+	testBadRecordingQuery = '0976087078',
+	testBadArtistQuery = 'OIouiyhi ughiug',
+	testBadLabelQuery = 'OIjhkopk p;ko',
+	testBadWorkQuery = 'OIjhiouhguhuh uh u';
 
 
 describe('mb', function(){
     
-    describe('#lookupRelease()', function(){
+	describe('#lookupRelease()', function(){
 		it('should find an release by MBID', function (done) {
 			mb.lookupRelease(testReleaseMbid, null, function (err, release) {
 				if (err) { throw err; }
@@ -61,15 +61,15 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when MBID is not present', function (done) {
-            mb.lookupRelease( '', [], function(err, release){
+		it('should return an error when MBID is not present', function (done) {
+			mb.lookupRelease( '', [], function(err, release){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
-    });
+				done();
+			});
+		});
+	});
 
-    describe('#lookupReleaseGroup()', function(){
+	describe('#lookupReleaseGroup()', function(){
 		it('should find an release group by MBID', function (done) {
 			mb.lookupReleaseGroup(testReleaseGroupMbid, null, function (err, releaseGroup) {
 				if (err) { throw err; }
@@ -87,17 +87,17 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when MBID is not present', function (done) {
-            mb.lookupReleaseGroup( '', [], function(err, releaseGroup){
+		it('should return an error when MBID is not present', function (done) {
+			mb.lookupReleaseGroup( '', [], function(err, releaseGroup){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
 
-    describe('#lookupRecording()', function(){
+	describe('#lookupRecording()', function(){
 		it('should find an recording by MBID', function (done) {
 			mb.lookupRecording(testRecordingMbid, null, function (err, recording) {
 				if (err) { throw err; }
@@ -115,16 +115,16 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when MBID is not present', function (done) {
-            mb.lookupRecording( '', [], function(err, recording){
+		it('should return an error when MBID is not present', function (done) {
+			mb.lookupRecording( '', [], function(err, recording){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-    describe('#lookupArtist()', function(){
+	describe('#lookupArtist()', function(){
 		it('should find an artist by MBID', function (done) {
 			mb.lookupArtist(testArtistMbid, null, function (err, artist) {
 				if (err) { throw err; }
@@ -142,16 +142,16 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when MBID is not present', function (done) {
-            mb.lookupArtist( '', [], function(err, artist){
+		it('should return an error when MBID is not present', function (done) {
+			mb.lookupArtist( '', [], function(err, artist){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-    describe('#lookupLabel()', function(){
+	describe('#lookupLabel()', function(){
 
 		it('should find a label by MBID', function (done) {
 			mb.lookupLabel(testLabelMbid, null, function (err, label) {
@@ -170,16 +170,16 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when MBID is not present', function (done) {
-            mb.lookupLabel( '', [], function(err, label){
+		it('should return an error when MBID is not present', function (done) {
+			mb.lookupLabel( '', [], function(err, label){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-    describe('#lookupWork()', function(){
+	describe('#lookupWork()', function(){
 
 		it('should find a work by MBID', function (done) {
 			mb.lookupWork(testWorkMbid, null, function (err, work) {
@@ -198,16 +198,16 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when mbid is not present', function (done) {
-            mb.lookupWork( '', [], function(err, work){
+		it('should return an error when mbid is not present', function (done) {
+			mb.lookupWork( '', [], function(err, work){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-    describe('#lookupDiscId()', function(){
+	describe('#lookupDiscId()', function(){
 		it('should find a disc its DiscId', function (done) {
 			mb.lookupDiscId(testDiscId, null, function (err, disc) {
 				if (err) { throw err; }
@@ -225,111 +225,111 @@ describe('mb', function(){
 			});
 		});
 
-        it('should return an error when mbid is not present', function (done) {
-            mb.lookupDiscId( '', [], function(err, disc){
+		it('should return an error when mbid is not present', function (done) {
+			mb.lookupDiscId( '', [], function(err, disc){
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-    describe('#searchReleases()', function(){
-        it('should return an array of releases from a valid query', function (done) {
-            mb.searchReleases( testReleaseQuery, {}, function (err, result) {
-                if (err) { throw err; }
+	describe('#searchReleases()', function(){
+		it('should return an array of releases from a valid query', function (done) {
+			mb.searchReleases( testReleaseQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 
 				if (result.length) {
 					expect(result[0]).to.be.instanceof(Release);
 				}
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an empty array from a bad query', function (done) {
-            mb.searchReleases( testBadReleaseQuery, {}, function (err, result) {
-                if (err) { throw err; }
+		it('should return an empty array from a bad query', function (done) {
+			mb.searchReleases( testBadReleaseQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result).to.be.empty;
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an error when query is empty', function (done) {
-            mb.searchReleases( '', {}, function (err, result) {
+		it('should return an error when query is empty', function (done) {
+			mb.searchReleases( '', {}, function (err, result) {
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
 
-    describe('#searchRecordings()', function(){
-        it('should return an array of recordings from a valid query', function (done) {
-            mb.searchRecordings( testRecordingQuery, {}, function (err, result) {
-                if (err) { throw err; }
+	describe('#searchRecordings()', function(){
+		it('should return an array of recordings from a valid query', function (done) {
+			mb.searchRecordings( testRecordingQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 
 				if (result.length) {
 					expect(result[0]).to.be.instanceof(Recording);
 				}
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an empty array from a bad query', function (done) {
-            mb.searchRecordings( testBadRecordingQuery, {}, function (err, result) {
-                if (err) { throw err; }
+		it('should return an empty array from a bad query', function (done) {
+			mb.searchRecordings( testBadRecordingQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result).to.be.empty;
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an error when query is empty', function (done) {
-            mb.searchRecordings( '', {}, function (err, result) {
+		it('should return an error when query is empty', function (done) {
+			mb.searchRecordings( '', {}, function (err, result) {
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
 
-    describe('#searchArtists()', function(){
-        it('should return an array of artists from a valid query', function (done) {
-            mb.searchArtists( testArtistQuery, {}, function (err, result) {
-                if (err) { throw err; }
+	describe('#searchArtists()', function(){
+		it('should return an array of artists from a valid query', function (done) {
+			mb.searchArtists( testArtistQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 
 				if (result.length) {
 					expect(result[0]).to.be.instanceof(Artist);
 				}
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an empty array from a bad query', function (done) {
-            mb.searchArtists( testBadArtistQuery, {}, function (err, result) {
-                if (err) { throw err; }
+		it('should return an empty array from a bad query', function (done) {
+			mb.searchArtists( testBadArtistQuery, {}, function (err, result) {
+				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result).to.be.empty;
 				done();
-            });
-        });
+			});
+		});
 
-        it('should return an error when query is empty', function (done) {
-            mb.searchArtists( '', {}, function (err, result) {
+		it('should return an error when query is empty', function (done) {
+			mb.searchArtists( '', {}, function (err, result) {
 				expect(err).to.be.an.instanceof(Error);
-                done();
-            });
-        });
+				done();
+			});
+		});
 
-    });
+	});
 
-});
+	});
 
 
 //describe('Release', function(){ });
