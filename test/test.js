@@ -41,7 +41,21 @@ var testBadReleaseQuery = 'Uyguyg uiygu ygui',
 	testBadWorkQuery = 'OIjhiouhguhuh uh u';
 
 
-describe('mb', function(){
+describe('mb', function() {
+
+	describe('#configure', function () {
+		it('shouldn\'t crash', function (done) {
+			mb.configure({
+				baseURI: 'http://musicbrainz.org/ws/2/',
+				rateLimit: {
+					requests: 2,
+					interval: 2000
+				}
+			});
+
+			done();
+		});
+	});
     
 	describe('#lookupRelease()', function(){
 		it('should find an release by MBID', function (done) {

@@ -30,7 +30,7 @@
   "dependencies": {
     "request": "1.9.x",
     "xml2js": "0.1.x",
-    "timetrickle": "0.0.x"
+    "timetrickle": "~0.1.1"
   },
   "devDependencies": {
     "mocha": "~1.15.1",
