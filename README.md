@@ -63,6 +63,24 @@ mb.searchReleases('Elephant', { country: 'US' }, function(err, releases){
 });
 ```
 
+Configuration
+-------------
+
+If you run your own MusicBrainz server you can set a custom `baseURI`
+and and rate limit options. In the following example the API endpoint is
+"http://myMusicBrainzServer.org/ws/2/" and the rate limit allows 5
+requests per 2 seconds.
+
+```javascript
+var mb = require('musicbrainz');
+mb.configure({
+    baseURI: 'http://myMusicBrainzServer.org/ws/2/',
+    rateLimit: {
+        requests: 5,
+        interval: 2000
+    }
+});
+```
 
 Caching Lookups with Redis
 --------------------------
