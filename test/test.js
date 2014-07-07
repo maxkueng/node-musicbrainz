@@ -1,3 +1,5 @@
+"use strict";
+
 var expect = require('chai').expect,
     mb = require('../lib/musicbrainz'),
 
@@ -27,6 +29,7 @@ var testBadReleaseMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
 	testBadDiscId = 'discIddiscIddiscId';
 
 var testReleaseQuery = 'Elephant',
+    testReleaseSpecialCharsQuery = 'I\'m Not a Fan...But the Kids Like It!',
 	testReleaseGroupQuery = '',
 	testRecordingQuery = 'Fell In Love With A Girl',
 	testArtistQuery = 'The White Stripes',
@@ -277,6 +280,16 @@ describe('mb', function() {
 			});
 		});
 
+        it('should return a release even with special characters in the name', function(done) {
+            mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+				expect(result[0]).to.be.instanceof(Release);
+
+                done();
+            });
+        });
+
 	});
 
 
@@ -343,7 +356,7 @@ describe('mb', function() {
 
 	});
 
-	});
+});
 
 
 //describe('Release', function(){ });

@@ -11,7 +11,7 @@
     "tagging",
     "api"
   ],
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "http://maxkueng.com/node-musicbrainz",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "chai": "~1.8.1"
   },
   "scripts": {
-    "test": "make test"
+    "test": "node_modules/.bin/mocha -w"
   },
   "engines": [
     "node >=0.4.0"

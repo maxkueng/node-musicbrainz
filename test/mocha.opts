@@ -1,0 +1,5 @@
+--require chai
+--reporter spec
+--ui bdd
+--timeout 10000
+--recursive
