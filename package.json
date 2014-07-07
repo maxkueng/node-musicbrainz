@@ -37,7 +37,7 @@
     "chai": "~1.8.1"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha -w"
+    "test": "node_modules/.bin/mocha"
   },
   "engines": [
     "node >=0.4.0"
