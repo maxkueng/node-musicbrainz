@@ -338,6 +338,17 @@ describe('mb', function() {
 			});
 		});
 
+		it('should return an array of a single artist from a valid query with 1 result', function(done) {
+			mb.searchArtists( "\"Eagles of Death Metal\"", {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Artist);
+				done();
+			});
+		});
+
 		it('should return an empty array from a bad query', function (done) {
 			mb.searchArtists( testBadArtistQuery, {}, function (err, result) {
 				if (err) { throw err; }
