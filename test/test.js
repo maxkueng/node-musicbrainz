@@ -280,6 +280,14 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function (done) {
+			mb.searchReleases( 'Option Paralysis', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
+
         it('should return a release even with special characters in the name', function(done) {
             mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
 				if (err) { throw err; }
@@ -322,6 +330,13 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function(done) {
+			mb.searchRecordings( 'Black Bubblegum', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
 	});
 
 
@@ -354,6 +369,13 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function (done) {
+			mb.searchArtists( 'The Dillinger Escape Plan', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
 	});
 
 });
