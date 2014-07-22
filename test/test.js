@@ -280,6 +280,20 @@ describe('mb', function() {
 			});
 		});
 
+		it('should return an array of a single release from a valid query with 1 result', function(done) {
+			mb.searchReleases( "\"From Parts Unknown\"", {
+				reid: "7b396f47-71e4-4624-b1e4-92f125b720a1",
+			}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Release);
+				done();
+			});
+		});
+
+
         it('should return a release even with special characters in the name', function(done) {
             mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
 				if (err) { throw err; }
