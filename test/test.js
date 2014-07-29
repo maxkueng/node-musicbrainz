@@ -292,6 +292,45 @@ describe('mb', function() {
 
 	});
 
+	describe('#searchReleaseGroups()', function(){
+		it('should return an array of release groups from a valid query', function (done) {
+			mb.searchReleaseGroups( '"I Shall Exterminate Everything Around Me That Restricts Me From Being the Master"', {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				if (result.length) {
+					expect(result[0]).to.be.instanceof(ReleaseGroup);
+				}
+				done();
+			});
+		});
+
+		it('should return an empty array from a bad query', function (done) {
+			mb.searchReleaseGroups( testBadReleaseQuery, {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+				expect(result).to.be.empty;
+				done();
+			});
+		});
+
+		it('should return an error when query is empty', function (done) {
+			mb.searchReleaseGroups( '', {}, function (err, result) {
+				expect(err).to.be.an.instanceof(Error);
+				done();
+			});
+		});
+
+		it('should return a release even with special characters in the name', function(done) {
+			mb.searchReleaseGroups( '"Ænima"', {}, function (err, result) {
+			if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+				expect(result[0]).to.be.instanceof(ReleaseGroup);
+				done();
+      });
+    });
+
+	});
 
 	describe('#searchRecordings()', function(){
 		it('should return an array of recordings from a valid query', function (done) {
