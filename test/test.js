@@ -288,6 +288,20 @@ describe('mb', function() {
 			});
 		});
 
+		it('should return an array of a single release from a valid query with 1 result', function(done) {
+			mb.searchReleases( "\"From Parts Unknown\"", {
+				reid: "7b396f47-71e4-4624-b1e4-92f125b720a1",
+			}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Release);
+				done();
+			});
+		});
+
+
         it('should return a release even with special characters in the name', function(done) {
             mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
 				if (err) { throw err; }
@@ -362,6 +376,19 @@ describe('mb', function() {
 			});
 		});
 
+		it('should return an array of a single recording from a valid query with 1 result', function(done) {
+			mb.searchRecordings( "\"Heart On\"", {
+				reid: "0bfb1ff1-a34f-4224-8e90-674aaaa8ad6a",
+			}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Recording);
+				done();
+			});
+		});
+
 		it('should return an error when query is empty', function (done) {
 			mb.searchRecordings( '', {}, function (err, result) {
 				expect(err).to.be.an.instanceof(Error);
@@ -381,6 +408,17 @@ describe('mb', function() {
 				if (result.length) {
 					expect(result[0]).to.be.instanceof(Artist);
 				}
+				done();
+			});
+		});
+
+		it('should return an array of a single artist from a valid query with 1 result', function(done) {
+			mb.searchArtists( "\"Eagles of Death Metal\"", {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Artist);
 				done();
 			});
 		});
