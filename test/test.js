@@ -1,7 +1,7 @@
 "use strict";
 
 var expect = require('chai').expect,
-    mb = require('../lib/musicbrainz'),
+		mb = require('../lib/musicbrainz'),
 
 	Release = mb.Release,
 	ReleaseGroup = mb.ReleaseGroup,
@@ -29,7 +29,7 @@ var testBadReleaseMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
 	testBadDiscId = 'discIddiscIddiscId';
 
 var testReleaseQuery = 'Elephant',
-    testReleaseSpecialCharsQuery = 'I\'m Not a Fan...But the Kids Like It!',
+		testReleaseSpecialCharsQuery = 'I\'m Not a Fan...But the Kids Like It!',
 	testReleaseGroupQuery = '',
 	testRecordingQuery = 'Fell In Love With A Girl',
 	testArtistQuery = 'The White Stripes',
@@ -59,7 +59,7 @@ describe('mb', function() {
 			done();
 		});
 	});
-    
+		
 	describe('#lookupRelease()', function(){
 		it('should find an release by MBID', function (done) {
 			mb.lookupRelease(testReleaseMbid, null, function (err, release) {
@@ -166,6 +166,14 @@ describe('mb', function() {
 			});
 		});
 
+		it ('should include aliases when requested and present', function(done) {
+			mb.lookupArtist('1bc41dff-5397-4c53-bb50-469d2c277197', ['aliases'], function(err, artist) {
+				if (err) { throw err; }
+
+				expect(artist.aliases).to.have.length.above(0);
+				done();
+			});
+		});
 	});
 
 	describe('#lookupLabel()', function(){
@@ -288,18 +296,70 @@ describe('mb', function() {
 			});
 		});
 
-        it('should return a release even with special characters in the name', function(done) {
-            mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
+		it('should return an array of a single release from a valid query with 1 result', function(done) {
+			mb.searchReleases( "\"From Parts Unknown\"", {
+				reid: "7b396f47-71e4-4624-b1e4-92f125b720a1",
+			}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Release);
+				done();
+			});
+		});
+
+		it('should return a release even with special characters in the name', function(done) {
+			mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
 				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result[0]).to.be.instanceof(Release);
 
-                done();
-            });
-        });
+				done();
+			});
+		});
 
 	});
 
+	describe('#searchReleaseGroups()', function(){
+		it('should return an array of release groups from a valid query', function (done) {
+			mb.searchReleaseGroups( '"I Shall Exterminate Everything Around Me That Restricts Me From Being the Master"', {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				if (result.length) {
+					expect(result[0]).to.be.instanceof(ReleaseGroup);
+				}
+				done();
+			});
+		});
+
+		it('should return an empty array from a bad query', function (done) {
+			mb.searchReleaseGroups( testBadReleaseQuery, {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+				expect(result).to.be.empty;
+				done();
+			});
+		});
+
+		it('should return an error when query is empty', function (done) {
+			mb.searchReleaseGroups( '', {}, function (err, result) {
+				expect(err).to.be.an.instanceof(Error);
+				done();
+			});
+		});
+
+		it('should return a release even with special characters in the name', function(done) {
+			mb.searchReleaseGroups( '"Ænima"', {}, function (err, result) {
+			if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+				expect(result[0]).to.be.instanceof(ReleaseGroup);
+				done();
+			});
+		});
+
+	});
 
 	describe('#searchRecordings()', function(){
 		it('should return an array of recordings from a valid query', function (done) {
@@ -319,6 +379,19 @@ describe('mb', function() {
 				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result).to.be.empty;
+				done();
+			});
+		});
+
+		it('should return an array of a single recording from a valid query with 1 result', function(done) {
+			mb.searchRecordings( "\"Heart On\"", {
+				reid: "0bfb1ff1-a34f-4224-8e90-674aaaa8ad6a",
+			}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Recording);
 				done();
 			});
 		});
@@ -353,6 +426,17 @@ describe('mb', function() {
 			});
 		});
 
+		it('should return an array of a single artist from a valid query with 1 result', function(done) {
+			mb.searchArtists( "\"Eagles of Death Metal\"", {}, function (err, result) {
+				if (err) { throw err; }
+				expect(result).to.be.instanceof(Array);
+
+				expect(result.length).to.be.eql(1);
+				expect(result[0]).to.be.instanceof(Artist);
+				done();
+			});
+		});
+
 		it('should return an empty array from a bad query', function (done) {
 			mb.searchArtists( testBadArtistQuery, {}, function (err, result) {
 				if (err) { throw err; }
@@ -373,6 +457,15 @@ describe('mb', function() {
 			mb.searchArtists( 'The Dillinger Escape Plan', {}, function (err, result) {
 				expect(result).to.be.instanceof(Array);
 				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
+
+		it ('should include aliases in results', function(done) {
+			mb.searchArtists('"The Dillinger Escape Plan"', {}, function(err, result) {
+				if (err) { throw err; }
+
+				expect(result[0].aliases).to.have.length.above(0);
 				done();
 			});
 		});
