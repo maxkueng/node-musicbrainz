@@ -166,6 +166,14 @@ describe('mb', function() {
 			});
 		});
 
+		it ('should include aliases when requested and present', function(done) {
+			mb.lookupArtist('1bc41dff-5397-4c53-bb50-469d2c277197', ['aliases'], function(err, artist) {
+				if (err) { throw err; }
+
+				expect(artist.aliases).to.have.length.above(0);
+				done();
+			});
+		});
 	});
 
 	describe('#lookupLabel()', function(){
@@ -389,6 +397,15 @@ describe('mb', function() {
 		it('should return an error when query is empty', function (done) {
 			mb.searchArtists( '', {}, function (err, result) {
 				expect(err).to.be.an.instanceof(Error);
+				done();
+			});
+		});
+
+		it ('should include aliases in results', function(done) {
+			mb.searchArtists('"The Dillinger Escape Plan"', {}, function(err, result) {
+				if (err) { throw err; }
+
+				expect(result[0].aliases).to.have.length.above(0);
 				done();
 			});
 		});
