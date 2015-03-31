@@ -11,7 +11,7 @@
     "tagging",
     "api"
   ],
-  "version": "0.2.4",
+  "version": "0.2.5",
   "homepage": "http://maxkueng.com/node-musicbrainz",
   "repository": {
     "type": "git",
@@ -19,10 +19,9 @@
   },
   "author": "Max Kueng <me@maxkueng.com> (http://maxkueng.com/)",
   "contributors": [
-    {
-      "name": "Alex Ehrnschwender",
-      "email": "alex@crunchdevelopment.com"
-    }
+    "Alex Ehrnschwender (https://github.com/alexanderscott)",
+    "Sam (https://github.com/samcday)",
+    "Marco Godoy (https://github.com/ghostnumber7)"
   ],
   "directories": {
     "lib": "./lib"

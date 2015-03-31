@@ -120,6 +120,8 @@ Contributors
 
  - Max Kueng (http://maxkueng.com/)
  - Alex Ehrnschwender (http://alexehrnschwender.com/)
+ - Sam (https://github.com/samcday)
+ - Marco Godoy (https://github.com/ghostnumber7)
 
 License
 -------
