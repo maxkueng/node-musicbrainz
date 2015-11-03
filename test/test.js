@@ -1,7 +1,7 @@
 "use strict";
 
 var expect = require('chai').expect,
-    mb = require('../lib/musicbrainz'),
+		mb = require('../lib/musicbrainz'),
 
 	Release = mb.Release,
 	ReleaseGroup = mb.ReleaseGroup,
@@ -29,7 +29,7 @@ var testBadReleaseMbid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
 	testBadDiscId = 'discIddiscIddiscId';
 
 var testReleaseQuery = 'Elephant',
-    testReleaseSpecialCharsQuery = 'I\'m Not a Fan...But the Kids Like It!',
+		testReleaseSpecialCharsQuery = 'I\'m Not a Fan...But the Kids Like It!',
 	testReleaseGroupQuery = '',
 	testRecordingQuery = 'Fell In Love With A Girl',
 	testArtistQuery = 'The White Stripes',
@@ -59,7 +59,7 @@ describe('mb', function() {
 			done();
 		});
 	});
-    
+		
 	describe('#lookupRelease()', function(){
 		it('should find an release by MBID', function (done) {
 			mb.lookupRelease(testReleaseMbid, null, function (err, release) {
@@ -288,6 +288,14 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function (done) {
+			mb.searchReleases( 'Option Paralysis', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
+
 		it('should return an array of a single release from a valid query with 1 result', function(done) {
 			mb.searchReleases( "\"From Parts Unknown\"", {
 				reid: "7b396f47-71e4-4624-b1e4-92f125b720a1",
@@ -301,16 +309,15 @@ describe('mb', function() {
 			});
 		});
 
-
-        it('should return a release even with special characters in the name', function(done) {
-            mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
+		it('should return a release even with special characters in the name', function(done) {
+			mb.searchReleases( testReleaseSpecialCharsQuery, {}, function (err, result) {
 				if (err) { throw err; }
 				expect(result).to.be.instanceof(Array);
 				expect(result[0]).to.be.instanceof(Release);
 
-                done();
-            });
-        });
+				done();
+			});
+		});
 
 	});
 
@@ -349,8 +356,8 @@ describe('mb', function() {
 				expect(result).to.be.instanceof(Array);
 				expect(result[0]).to.be.instanceof(ReleaseGroup);
 				done();
-      });
-    });
+			});
+		});
 
 	});
 
@@ -396,6 +403,13 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function(done) {
+			mb.searchRecordings( 'Black Bubblegum', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
 	});
 
 
@@ -439,6 +453,14 @@ describe('mb', function() {
 			});
 		});
 
+		it('should include search score in results', function (done) {
+			mb.searchArtists( 'The Dillinger Escape Plan', {}, function (err, result) {
+				expect(result).to.be.instanceof(Array);
+				expect(result[0].searchScore).to.eql(100);
+				done();
+			});
+		});
+
 		it ('should include aliases in results', function(done) {
 			mb.searchArtists('"The Dillinger Escape Plan"', {}, function(err, result) {
 				if (err) { throw err; }
@@ -447,7 +469,6 @@ describe('mb', function() {
 				done();
 			});
 		});
-
 	});
 
 });
