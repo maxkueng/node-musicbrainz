@@ -27,9 +27,9 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "request": "1.9.x",
-    "xml2js": "0.1.x",
-    "timetrickle": "~0.1.1"
+    "request": "^2.88.2",
+    "timetrickle": "~0.1.1",
+    "xml2js": "0.1.x"
   },
   "devDependencies": {
     "mocha": "~1.15.1",
